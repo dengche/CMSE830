@@ -32,15 +32,19 @@ if purpose is "Pollution":
     upper = st.sidebar.slider("Max", min_value=lower, max_value=df[x].max(), value=df[x].max(), step=(df[x].max()-lower)/100)
     df_new = df[(df[x]>=lower) & (df[x]<=upper)]
     sns.regplot(df_new,x=x,y=pol,scatter_kws={"s":20},line_kws={"color": "red","linewidth":5},ax=ax)
-    ax.set_xlabel(x, fontsize=18)
-    ax.set_ylabel(pol, fontsize=18)
-    col1.pyplot(fig)
+    ax.set_xlabel(x, fontsize=24)
+    ax.set_ylabel(pol, fontsize=24)
     m = linregress(df_new[x], df_new[pol]).slope
     b = linregress(df_new[x],df_new[pol]).intercept
-    col1.markdown(f"Slope = {m:.2f}, Intercept = {b:.2f}")
     x_single = col2.number_input(f"Enter your {x}:")
-    pol_single = m*x_single + b
-    col2.markdown(f"Estimated {pol} is {pol_single:.2f} mg/m3")
+    press = col2.button("Estimate the emssion")
+    if press:
+        pol_single = m*x_single + b
+        col2.markdown(f"Estimated {pol} is {pol_single:.2f} mg/m3")
+        ax.plot(x_single,pol_single,"orange",marker='o', markersize=20,label = "Estimation")
+        ax.legend(fontsize = 24)
+    col1.pyplot(fig)
+    col1.markdown(f"Regression Results: Slope = {m:.2f}, Intercept = {b:.2f}")
 elif purpose is "Operation":
     col1.markdown("## In progress")
 
