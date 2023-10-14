@@ -3,7 +3,8 @@ import seaborn as sns
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import linregress
-st.sidebar.title("Choose purpose")
+st.title("Gas Turbine Emission Dataset")
+st.sidebar.title("Choose variables")
 df = pd.read_csv("gt_2015.csv")
 df.columns = ["Ambient Temperature (°C)","Ambient Pressure (mbar)","Ambient Humidity (%)",
          "Air Filter Difference Pressure (mbar)","Exhaust Pressure (mbar)","Inlet Temperature (°C)",
@@ -19,7 +20,7 @@ if purpose is "Pollution":
     typ = ' '
     pol = st.sidebar.selectbox("Choose Pollutant",pol_list)
     typ = st.sidebar.selectbox("Choose Variables",typ_list)
-    col1.markdown(f"#### {pol}")
+    col1.markdown(f"#### Emission type: {pol}")
     fig, ax = plt.subplots(figsize=(16, 12))
     sns.set_style('darkgrid')
     if typ == "Ambient":
@@ -30,7 +31,7 @@ if purpose is "Pollution":
     lower = st.sidebar.slider("Min", min_value=df[x].min(), max_value=df[x].max(), value=df[x].min(), step=(df[x].max()-df[x].min())/100)
     upper = st.sidebar.slider("Max", min_value=lower, max_value=df[x].max(), value=df[x].max(), step=(df[x].max()-lower)/100)
     df_new = df[(df[x]>=lower) & (df[x]<=upper)]
-    sns.regplot(df_new,x=x,y=pol,scatter_kws={"s":4},ax=ax)
+    sns.regplot(df_new,x=x,y=pol,scatter_kws={"s":20},line_kws={"color": "red","linewidth":5},ax=ax)
     ax.set_xlabel(x, fontsize=18)
     ax.set_ylabel(pol, fontsize=18)
     col1.pyplot(fig)
