@@ -6,7 +6,7 @@ from scipy.stats import linregress
 
 def welcome_page():
     st.title("Gas Turbine Emission Dataset")
-    st.image(https://github.com/dengche/CMSE830/blob/main/800px_Natgasturb.png?raw=true)
+    st.image(url = "https://github.com/dengche/CMSE830/blob/main/800px_Natgasturb.png?raw=true")
     mark = st.markdown("#### This is the dataset for the gas turbine emission of Carbon Monoxide(CO) and Nitrogen Oxide (NOx) at different working conditions ")
     if st.button("Enter"):
         st.session_state.page = "main"
