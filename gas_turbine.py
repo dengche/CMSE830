@@ -2,7 +2,6 @@ import streamlit as st
 import seaborn as sns
 import pandas as pd
 import matplotlib.pyplot as plt
-import statsmodels.api as sm
 from scipy.stats import linregress
 
 def welcome_page():
