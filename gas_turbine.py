@@ -167,7 +167,7 @@ def main_page():
                 col1.pyplot(f)
                 col2.markdown(f"The minimum pollution in selected range is")
                 col2.markdown(f" {df_new[pol].min()} mg/m3")
-        st.markdown("**Based on the EDA, to get better working condition with lower pollution, we should increase our working temperature and pressure as much as possible, especially we should focus on the pressure difference and inlet temperature to efficiently reduce the CO and NOx emission**")
+            st.markdown("**Based on the EDA, to get better working condition with lower pollution, we should increase our working temperature and pressure as much as possible, especially we should focus on the pressure difference and inlet temperature to efficiently reduce the CO and NOx emission**")
 if "page" not in st.session_state:
     st.session_state.page = "welcome"
 
