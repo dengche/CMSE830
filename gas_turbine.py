@@ -7,7 +7,7 @@ from scipy.stats import linregress
 
 def welcome_page():
     st.title("Gas Turbine Emission Dataset")
-    st.image("800px-Natgasturb.png")
+    st.image("https://energyeducation.ca/wiki/images/thumb/3/3d/Natgasturb.png/800px-Natgasturb.png")
     text1 = """
     #### This is the dataset for the gas turbine emission of Carbon Monoxide(CO) and Nitrogen Oxide (NOx) at different working conditions 
     #### You can choose the variables of ambient or turbine to see the range of emission and predict the average emission for specified working conditions
